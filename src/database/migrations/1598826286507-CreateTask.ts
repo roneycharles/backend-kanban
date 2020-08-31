@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table, GridFSBucketReadStream} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, IsNull} from "typeorm";
 
 export class CreateTask1598826286507 implements MigrationInterface {
 
@@ -50,7 +50,8 @@ export class CreateTask1598826286507 implements MigrationInterface {
                     {
                         name: 'deleted_at',
                         type: 'timestamp',
-                        default: null
+                        isNullable: true,
+                        default: 'null'
                     }
                 ]
             })

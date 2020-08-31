@@ -1,10 +1,8 @@
-import { getCustomRepository } from 'typeorm';
-import { isBefore, startOfDay } from 'date-fns';
+import { getRepository } from 'typeorm';
+import { isBefore, startOfMinute } from 'date-fns';
 
-import AppError from '../errors/AppError';
-import Task from '../models/Task';
-import TaskRepository from '../repositories/TaskRepository';
-import User from 'models/User';
+import AppError from '../../errors/AppError';
+import Task from '../../models/Task';
 
 interface Request {
     title: string;
@@ -16,13 +14,13 @@ interface Request {
 
 class CreateTaskService {
     public async execute({title, user_id, description, type, delivery_date}: Request): Promise<Task> {
-        const taskRepository = getCustomRepository(TaskRepository);
+        const taskRepository = getRepository(Task);
 
-        const taskDate = startOfDay(delivery_date);
+        const taskDate = startOfMinute(delivery_date);
 
         var date = new Date();
 
-        const findDateByPast = isBefore(date, delivery_date)
+        const findDateByPast = isBefore(delivery_date, date)
 
         if (findDateByPast) {
             throw new AppError('Data não pode ser anterior à data atual');
@@ -33,7 +31,7 @@ class CreateTaskService {
             user_id,
             description,
             type,
-            delivery_date: taskDate
+            delivery_date: taskDate,
         });
 
         await taskRepository.save(task);

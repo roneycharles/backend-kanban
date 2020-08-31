@@ -1,7 +1,6 @@
 import { Router, Request, Response } from 'express';
 
-import AuthUserService from '../services/AuthUserService';
-import { areIntervalsOverlappingWithOptions } from 'date-fns/fp';
+import AuthUserService from '../services/Users/AuthUserService';
 
 const sessionRouter = Router();
 
