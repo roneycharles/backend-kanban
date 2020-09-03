@@ -24,13 +24,13 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
             message: err.message,
         });
     }
-    console.log(err);
 
     return response.status(500).json({
         status: 'error',
         message: 'Internal server error',
     })
 });
+
 
 app.listen(3333, () => {
     console.log('✅Server started at http://localhost:3333');

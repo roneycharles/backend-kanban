@@ -14,7 +14,13 @@ class TaskRepository extends Repository<Task> {
         return findTask || null;
     }
     findById(id: string) {
-        return this.findOne({ id });
+        const findId = this.findOne({ id });
+
+        if(!findId) {
+            throw new AppError('Tarefa informada não existe')
+        }
+
+        return findId;
     }
 
     validationDeliveryDate(delivery_date: Date) {

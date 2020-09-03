@@ -20,11 +20,7 @@ class UpdateTaskService {
 
         taskRepository.validationDeliveryDate(delivery_date);
 
-        const findTask = taskRepository.findById(id);
-
-        if(!findTask) {
-            throw new AppError('Tarefa inexistente.')
-        }
+        await taskRepository.findById(id);
 
         const taskDate = startOfMinute(delivery_date);
 
