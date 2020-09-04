@@ -8,8 +8,8 @@
     "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "docker-up": "sudo docker run --rm --name vaibem -e 'POSTGRES_PASSWORD=docker'  -e 'POSTGRES_DB=vaibem' -p 5432:5432 -d postgres",
-    "prestart": "tsc",
-    "start": "node dist/server.js"
+    "prestart": "yarn",
+    "start": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     },
   "dependencies": {
     "bcryptjs": "^2.4.3",
