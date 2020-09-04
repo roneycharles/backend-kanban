@@ -36,7 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateTask1598826286507 = void 0;
 var typeorm_1 = require("typeorm");
 var CreateTask1598826286507 = /** @class */ (function () {
     function CreateTask1598826286507() {
